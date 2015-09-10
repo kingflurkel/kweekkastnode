@@ -1,5 +1,6 @@
 console.log("Kweekkast starting");
 
+startFlower();
 
 var request = require("request");
 var FlowerPower = require('flower-power');
@@ -8,15 +9,16 @@ var Firebase = require("firebase");
 
 var myFirebaseRef = new Firebase("https://kweekkast.firebaseio.com/");
 
-
-FlowerPower.discover(function(flowerPower) {
-	console.log('Found a device');
-	flowerPower.connectAndSetup(function() {
-		console.log('Connected to device');
-		// fetch the data status every x min.
-		fetchData(flowerPower);
+function startFlower(){
+	FlowerPower.discover(function(flowerPower) {
+		console.log('Found a device');
+		flowerPower.connectAndSetup(function() {
+			console.log('Connected to device');
+			// fetch the data status every x min.
+			fetchData(flowerPower);
+		});
 	});
-});
+};
 
 
 
@@ -83,6 +85,10 @@ function fetchData(flowerPower) {
 					flowerPower.disconnect(function(){
 						console.log('Disconnected from device');
 					});
+
+					setTimeout(function(){
+						startFlower();
+					}, 10000);
 				}
 
 			});
