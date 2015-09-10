@@ -15,7 +15,7 @@ FlowerPower.discover(function(flowerPower) {
 		// fetch the data status every x min.
 		var checkInterval = setInterval(function() {
 			fetchData(flowerPower);
-		}, 9 * 1000);
+		}, 5 * 1000);
 	});
 });
 
