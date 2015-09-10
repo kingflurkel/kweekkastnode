@@ -51,7 +51,7 @@ function fetchData(flowerPower) {
 					// alles uitgelezen....
 					// data posten
 					// normaal is dat nen array met 3 getallen
-					myFirebaseRef.push({ 'airtemp': result[1], 'soilmoisture': result[2] });
+					myFirebaseRef.push({ 'airtemp': results[1], 'soilmoisture': results[2] });
 					console.log("data=", results);
 var url = "https://data.sparkfun.com/input/DJLnMNw2mJcjqEZMn5wq?private_key=P4A6oKGY94hY7bZqE4K7&light=" + results[0]
 	+ "&airtemp=" + results[1] 
