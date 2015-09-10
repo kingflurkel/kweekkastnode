@@ -1,6 +1,6 @@
 console.log("Kweekkast starting");
 
-startFlower();
+
 
 var request = require("request");
 var FlowerPower = require('flower-power');
@@ -8,6 +8,8 @@ var async = require('async');
 var Firebase = require("firebase");
 
 var myFirebaseRef = new Firebase("https://kweekkast.firebaseio.com/");
+
+startFlower();
 
 function startFlower(){
 	FlowerPower.discover(function(flowerPower) {
