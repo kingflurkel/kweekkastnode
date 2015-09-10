@@ -93,7 +93,7 @@ function fetchData(flowerPower) {
 
 					setTimeout(function(){
 						startFlower();
-					}, 30 * 1000);
+					}, 60 * 1000);
 				}
 
 			});
