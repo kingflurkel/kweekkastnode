@@ -15,9 +15,6 @@ FlowerPower.discover(function(flowerPower) {
 		console.log('Connected to device');
 		// fetch the data status every x min.
 		fetchData(flowerPower);
-		flowerPower.disconnect(function(){
-			console.log('Disconnected from device');
-		});
 	});
 });
 
@@ -81,6 +78,10 @@ function fetchData(flowerPower) {
 						'soilmoisture': results[9],
 						'battery': results[10],
 						'timestamp': Date.now()
+					});
+
+					flowerPower.disconnect(function(){
+						console.log('Disconnected from device');
 					});
 				}
 
