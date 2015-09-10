@@ -79,20 +79,7 @@ function fetchData(flowerPower) {
 						'battery': results[10],
 						'timestamp': Date.now()
 					});
-					
-					console.log(url);
-					request({
-						url: url,
-					}, function(error, response, body) {
-						if (!error && response.statusCode === 200) {
-							console.log('okay');
-
-						} else {
-							console.log(error);
-
-						}
-					});
 				}
 
 			});
-	}
+		}
