@@ -15,7 +15,7 @@ FlowerPower.discover(function(flowerPower) {
 		// fetch the data status every x min.
 		var checkInterval = setInterval(function() {
 			fetchData(flowerPower);
-		}, 10 * 1000);
+		}, 5 * 1000);
 	});
 });
 
@@ -28,10 +28,10 @@ function fetchData(flowerPower) {
 			function readSunlight(callback) {
 				flowerPower.readCalibratedSunlight(callback);
 					},
-					function readAirTemperature(callback) {
+					function readCAirTemperature(callback) {
 						flowerPower.readCalibratedAirTemperature(callback);
 					},
-					function readSoilMoisture(callback) {
+					function readCSoilMoisture(callback) {
 						flowerPower.readCalibratedSoilMoisture(callback);
 					},
 					function readEa(callback) {
@@ -42,6 +42,21 @@ function fetchData(flowerPower) {
 					},
 					function readEcb(callback) {
 						flowerPower.readCalibratedEcb(callback);
+					},
+					function readSunlight(callback) {
+						flowerPower.readSunlight(callback);
+					},
+					function readSoilTemperature(callback) {
+						flowerPower.readSoilTemperature(callback);
+					},
+					function readAirTemperature(callback) {
+						flowerPower.readAirTemperature(callback);
+					},
+					function readSoilMoisture(callback) {
+						flowerPower.readSoilMoisture(callback);
+					},
+					function readBattery(callback) {
+						flowerPower.readBatteryLevel(callback);
 					}
 			],
 			function(err, results) {
@@ -51,14 +66,20 @@ function fetchData(flowerPower) {
 					// alles uitgelezen....
 					// data posten
 					// normaal is dat nen array met 3 getallen
-					myFirebaseRef.push({ 'airtemp': results[1], 'soilmoisture': results[2] });
-					console.log("data=", results);
-var url = "https://data.sparkfun.com/input/DJLnMNw2mJcjqEZMn5wq?private_key=P4A6oKGY94hY7bZqE4K7&light=" + results[0]
-	+ "&airtemp=" + results[1] 
-	+ "&soilmoisture=" + results[2] 
-	+ "&ea=" + results[3] 
-	+ "&ecporous=" + results[4]
-	+ "&ecb=" + results[5];
+					myFirebaseRef.push({ 
+						'cairtemp': results[1], 
+						'csoilmoisture': results[2],
+						'ea': results[3],
+						'ecporous': results[4],
+						'ecb': results[5],
+						'sunlight': results[6],
+						'soiltemperature': results[7],
+						'airtemperature': results[8],
+						'soilmoisture': results[9],
+						'battery': results[10],
+						'timestamp': Date.now();
+					});
+					
 					console.log(url);
 					request({
 						url: url,
