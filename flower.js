@@ -77,7 +77,7 @@ function fetchData(flowerPower) {
 						'airtemperature': results[8],
 						'soilmoisture': results[9],
 						'battery': results[10],
-						'timestamp': Date.now();
+						'timestamp': Date.now()
 					});
 					
 					console.log(url);
