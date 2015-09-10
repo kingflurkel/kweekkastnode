@@ -8,14 +8,14 @@ var Firebase = require("firebase");
 
 var myFirebaseRef = new Firebase("https://kweekkast.firebaseio.com/");
 
+
 FlowerPower.discover(function(flowerPower) {
 	console.log('Found a device');
 	flowerPower.connectAndSetup(function() {
 		console.log('Connected to device');
 		// fetch the data status every x min.
-		var checkInterval = setInterval(function() {
-			fetchData(flowerPower);
-		}, 5 * 1000);
+		fetchData(flowerPower);
+		flowerPower.disconnect();
 	});
 });
 
