@@ -1,3 +1,6 @@
+//sudo forever start -a -l forever.log -o out2.log -e err.log /mnt/KFProjects/kweekkast/flower.js 
+
+
 console.log("Kweekkast starting");
 
 
@@ -90,7 +93,7 @@ function fetchData(flowerPower) {
 
 					setTimeout(function(){
 						startFlower();
-					}, 60 * 1000);
+					}, 30 * 1000);
 				}
 
 			});
