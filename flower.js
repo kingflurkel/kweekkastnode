@@ -65,6 +65,7 @@ function fetchData(flowerPower) {
 				} else {
 					// alles uitgelezen....
 					// data posten
+					console.log('time: ',Date.now(), ' airtemperature', results[8]);
 					// normaal is dat nen array met 3 getallen
 					myFirebaseRef.push({ 
 						'cairtemp': results[1], 
