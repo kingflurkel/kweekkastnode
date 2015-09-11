@@ -26,7 +26,7 @@ console.log("Getting to discovery");
 			console.log('Connected to device');
 			// fetch the data status every x min.
 			console.log('battery log');
-			flowerPower.readBatteryLevel(err, function(batterylevel){
+			flowerPower.readBatteryLevel(function(err, batterylevel){
 				fb_battery.set({"battery": batterylevel});
 			});
 
