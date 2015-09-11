@@ -28,9 +28,9 @@ console.log("Getting to discovery");
 
 			flowerPower.enableLiveMode(function(err){
 				console.log('battery setup');
-				setInterval(flowerPower.readBatteryLevel(function(batterylevel){
+				flowerPower.readBatteryLevel(function(batterylevel){
 					fb_battery.set({"battery": batterylevel});
-				}), 60 * 1000);
+				});
 
 				console.log('live mode enabled');
 				flowerPower.on('airTemperatureChange', function(airtemp){
