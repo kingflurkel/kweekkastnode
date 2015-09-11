@@ -25,11 +25,13 @@ console.log("Getting to discovery");
 		flowerPower.connectAndSetup(function() {
 			console.log('Connected to device');
 			// fetch the data status every x min.
-			setInterval(flowerPower.readBatteryLevel(function(batterylevel){
-				fb_battery.set({"battery": batterylevel});
-			}), 60 * 1000);
 
 			flowerPower.enableLiveMode(function(err){
+				console.log('battery setup');
+				setInterval(flowerPower.readBatteryLevel(function(batterylevel){
+					fb_battery.set({"battery": batterylevel});
+				}), 60 * 1000);
+
 				console.log('live mode enabled');
 				flowerPower.on('airTemperatureChange', function(airtemp){
 					console.log("airtemp changed: ",airtemp);
