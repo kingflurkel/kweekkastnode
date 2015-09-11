@@ -21,6 +21,9 @@ var myFirebaseRef = new Firebase("https://kweekkast.firebaseio.com/");
 			//setInterval(fetchData(flowerPower), 30 * 1000);
 			flowerPower.enableLiveMode(function(err){
 				console.log('live mode enabled');
+				flowerPower.on('airTemperatureChange', function(airtemp){
+					console.log("airtemp changed: ",airtemp);
+				});
 			});
 		});
 	});
