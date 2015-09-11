@@ -10,7 +10,6 @@ var FlowerPower = require('flower-power');
 var async = require('async');
 var Firebase = require("firebase");
 
-var fb_kast = new Firebase("https://kweekkast.firebaseio.com/kast");
 
 var fb_sun = new Firebase("https://kweekkast.firebaseio.com/sunlight");
 var fb_airtemp = new Firebase("https://kweekkast.firebaseio.com/airtemp");
@@ -96,19 +95,19 @@ function fetchData(flowerPower) {
 					// data posten
 					console.log('time: ',Date.now(), ' airtemperature', results[8]);
 					// normaal is dat nen array met 3 getallen
-					fb_kast.set({ 
-						'cairtemp': results[1], 
-						'csoilmoisture': results[2],
-						'ea': results[3],
-						'ecporous': results[4],
-						'ecb': results[5],
-						'sunlight': results[6],
-						'soiltemperature': results[7],
-						'airtemperature': results[8],
-						'soilmoisture': results[9],
-						'battery': results[10],
-						'timestamp': Date.now()
-					});
+					// fb_kast.set({ 
+					// 	'cairtemp': results[1], 
+					// 	'csoilmoisture': results[2],
+					// 	'ea': results[3],
+					// 	'ecporous': results[4],
+					// 	'ecb': results[5],
+					// 	'sunlight': results[6],
+					// 	'soiltemperature': results[7],
+					// 	'airtemperature': results[8],
+					// 	'soilmoisture': results[9],
+					// 	'battery': results[10],
+					// 	'timestamp': Date.now()
+					// });
 				}
 
 			});
