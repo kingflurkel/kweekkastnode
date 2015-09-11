@@ -10,18 +10,17 @@ var Firebase = require("firebase");
 
 var myFirebaseRef = new Firebase("https://kweekkast.firebaseio.com/");
 
-startFlower();
 
-function startFlower(){
-	FlowerPower.discover(function(flowerPower) {
-		console.log('Found a device');
-		flowerPower.connectAndSetup(function() {
-			console.log('Connected to device');
-			// fetch the data status every x min.
-			fetchData(flowerPower);
-		});
+FlowerPower.discover(function(flowerPower) {
+	console.log('Found a device');
+	flowerPower.connectAndSetup(function() {
+		console.log('Connected to device');
+		// fetch the data status every x min.
+		setTimeout(function(){
+						fetchData(flowerPower);
+					}, 30 * 1000);
 	});
-};
+});
 
 
 
@@ -89,9 +88,7 @@ function fetchData(flowerPower) {
 					// 	console.log('Disconnected from device');
 					// });
 
-					setTimeout(function(){
-						fetchData(flowerPower);
-					}, 30 * 1000);
+					
 				}
 
 			});
