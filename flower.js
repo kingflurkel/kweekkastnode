@@ -3,8 +3,6 @@
 
 console.log("Kweekkast starting");
 
-
-
 var request = require("request");
 var FlowerPower = require('flower-power');
 var async = require('async');
@@ -87,13 +85,13 @@ function fetchData(flowerPower) {
 						'timestamp': Date.now()
 					});
 
-					flowerPower.disconnect(function(){
-						console.log('Disconnected from device');
-					});
+					// flowerPower.disconnect(function(){
+					// 	console.log('Disconnected from device');
+					// });
 
 					setTimeout(function(){
-						startFlower();
-					}, 60 * 1000);
+						fetchData(flowerPower);
+					}, 30 * 1000);
 				}
 
 			});
