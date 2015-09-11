@@ -12,7 +12,6 @@ var Firebase = require("firebase");
 
 var myFirebaseRef = new Firebase("https://kweekkast.firebaseio.com/");
 
-startFlower();
 
 	FlowerPower.discover(function(flowerPower) {
 		console.log('Found a device');
