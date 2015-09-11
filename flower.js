@@ -1,7 +1,9 @@
-//sudo forever start -a -l forever.log -o out2.log -e err.log /mnt/KFProjects/kweekkast/flower.js 
+//sudo forever stop -a -l forever.log -o out2.log -e err.log /mnt/KFProjects/kweekkast/flower.js 
 
 
 console.log("Kweekkast starting");
+
+
 
 var request = require("request");
 var FlowerPower = require('flower-power');
@@ -10,17 +12,16 @@ var Firebase = require("firebase");
 
 var myFirebaseRef = new Firebase("https://kweekkast.firebaseio.com/");
 
+startFlower();
 
-FlowerPower.discover(function(flowerPower) {
-	console.log('Found a device');
-	flowerPower.connectAndSetup(function() {
-		console.log('Connected to device');
-		// fetch the data status every x min.
-		setTimeout(function(){
-						fetchData(flowerPower);
-					}, 30 * 1000);
+	FlowerPower.discover(function(flowerPower) {
+		console.log('Found a device');
+		flowerPower.connectAndSetup(function() {
+			console.log('Connected to device');
+			// fetch the data status every x min.
+			setInterval(fetchData(flowerPower), 30 * 1000);
+		});
 	});
-});
 
 
 
@@ -65,6 +66,9 @@ function fetchData(flowerPower) {
 			function(err, results) {
 				if (err) {
 					console.error(err);
+					flowerPower.disconnect(function(){
+						console.log('Disconnected from device');
+					});
 				} else {
 					// alles uitgelezen....
 					// data posten
@@ -83,12 +87,6 @@ function fetchData(flowerPower) {
 						'battery': results[10],
 						'timestamp': Date.now()
 					});
-
-					// flowerPower.disconnect(function(){
-					// 	console.log('Disconnected from device');
-					// });
-
-					
 				}
 
 			});
