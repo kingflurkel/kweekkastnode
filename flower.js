@@ -10,6 +10,8 @@ var FlowerPower = require('flower-power');
 var async = require('async');
 var Firebase = require("firebase");
 
+var fb_kast = new Firebase("https://kweekkast.firebaseio.com/kast");
+
 var fb_sun = new Firebase("https://kweekkast.firebaseio.com/sunlight");
 var fb_airtemp = new Firebase("https://kweekkast.firebaseio.com/airtemp");
 var fb_moist = new Firebase("https://kweekkast.firebaseio.com/moist");
@@ -25,19 +27,19 @@ var fb_soiltemp = new Firebase("https://kweekkast.firebaseio.com/soiltemp");
 				console.log('live mode enabled');
 				flowerPower.on('airTemperatureChange', function(airtemp){
 					console.log("airtemp changed: ",airtemp);
-					fb_airtemp.push({'airtemp': airtemp, 'timestamp': Date.now()});
+					fb_airtemp.set({'airtemp': airtemp, 'timestamp': Date.now()});
 				});
 				flowerPower.on('sunlightChange', function(sunlight){
 					console.log("sunlight changed: ", sunlight);
-					fb_sun.push({'sun': sunlight, 'timestamp': Date.now()});
+					fb_sun.set({'sun': sunlight, 'timestamp': Date.now()});
 				});
 				flowerPower.on('soilTemperatureChange', function(soiltemp){
 					console.log("soiltemp changed: ", soiltemp);
-					fb_soiltemp.push({'soiltemp': soiltemp, 'timestamp': Date.now()});
+					fb_soiltemp.set({'soiltemp': soiltemp, 'timestamp': Date.now()});
 				});
 				flowerPower.on('soilMoistureChange', function(soilmoist){
 					console.log("soilmoist changed: ", soilmoist);
-					fb_moist.push({'soilmoist': soilmoist, 'timestamp': Date.now()});
+					fb_moist.set({'soilmoist': soilmoist, 'timestamp': Date.now()});
 				});
 			});
 		});
@@ -94,7 +96,7 @@ function fetchData(flowerPower) {
 					// data posten
 					console.log('time: ',Date.now(), ' airtemperature', results[8]);
 					// normaal is dat nen array met 3 getallen
-					myFirebaseRef.push({ 
+					fb_kast.set({ 
 						'cairtemp': results[1], 
 						'csoilmoisture': results[2],
 						'ea': results[3],
