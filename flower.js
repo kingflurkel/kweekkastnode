@@ -16,6 +16,7 @@ var fb_sun = new Firebase("https://kweekkast.firebaseio.com/IO/sunlight");
 var fb_airtemp = new Firebase("https://kweekkast.firebaseio.com/IO/airtemp");
 var fb_moist = new Firebase("https://kweekkast.firebaseio.com/IO/moist");
 var fb_soiltemp = new Firebase("https://kweekkast.firebaseio.com/IO/soiltemp");
+var fb_battery = new Firebase("https://kweekkast.firebaseio.com/IO/battery");
 
 console.log("Getting to discovery");
 
@@ -24,7 +25,10 @@ console.log("Getting to discovery");
 		flowerPower.connectAndSetup(function() {
 			console.log('Connected to device');
 			// fetch the data status every x min.
-			//setInterval(fetchData(flowerPower), 30 * 1000);
+			setInterval(flowerPower.readBatteryLevel(function(batterylevel){
+				fb_battery.set({"battery": batterylevel});
+			}), 60 * 1000);
+
 			flowerPower.enableLiveMode(function(err){
 				console.log('live mode enabled');
 				flowerPower.on('airTemperatureChange', function(airtemp){
