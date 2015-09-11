@@ -29,7 +29,7 @@ console.log("Getting to discovery");
 			flowerPower.enableLiveMode(function(err){
 				console.log('battery setup');
 				flowerPower.readBatteryLevel(function(batterylevel){
-					fb_battery.set({"battery": batterylevel});
+					fb_battery.set("battery": batterylevel);
 				});
 
 				console.log('live mode enabled');
