@@ -25,7 +25,6 @@ console.log("Getting to discovery");
 		flowerPower.connectAndSetup(function() {
 			console.log('Connected to device');
 			// fetch the data status every x min.
-			console.log('battery setup');
 
 			flowerPower.enableLiveMode(function(err){
 
@@ -44,18 +43,18 @@ console.log("Getting to discovery");
 				});
 				flowerPower.on('soilMoistureChange', function(soilmoist){
 					console.log("soilmoist changed: ", soilmoist);
-					checkBattery(flowerPower);
 					fb_moist.set({'soilmoist': soilmoist, 'timestamp': Date.now()});
+					console.log('battery log');
+					flowerPower.readBatteryLevel(err, function(batterylevel){
+						fb_battery.set({"battery": batterylevel});
+					});
 				});
 			});
 		});
 	});
 
 function checkBattery(flowerPower){
-	console.log('battery log');
-	flowerPower.readBatteryLevel(err, function(batterylevel){
-		fb_battery.set({"battery": batterylevel});
-	});
+	
 }
 
 
