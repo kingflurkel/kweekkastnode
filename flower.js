@@ -18,7 +18,10 @@ var myFirebaseRef = new Firebase("https://kweekkast.firebaseio.com/");
 		flowerPower.connectAndSetup(function() {
 			console.log('Connected to device');
 			// fetch the data status every x min.
-			setInterval(fetchData(flowerPower), 30 * 1000);
+			//setInterval(fetchData(flowerPower), 30 * 1000);
+			flowerPower.enableLiveMode(function(err){
+				console.log('live mode enabled');
+			});
 		});
 	});
 
