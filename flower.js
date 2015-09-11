@@ -10,11 +10,14 @@ var FlowerPower = require('flower-power');
 var async = require('async');
 var Firebase = require("firebase");
 
+console.log("Setting up firebase refs");
 
-var fb_sun = new Firebase("https://kweekkast.firebaseio.com/sunlight");
-var fb_airtemp = new Firebase("https://kweekkast.firebaseio.com/airtemp");
-var fb_moist = new Firebase("https://kweekkast.firebaseio.com/moist");
-var fb_soiltemp = new Firebase("https://kweekkast.firebaseio.com/soiltemp");
+var fb_sun = new Firebase("https://kweekkast.firebaseio.com/IO/sunlight");
+var fb_airtemp = new Firebase("https://kweekkast.firebaseio.com/IO/airtemp");
+var fb_moist = new Firebase("https://kweekkast.firebaseio.com/IO/moist");
+var fb_soiltemp = new Firebase("https://kweekkast.firebaseio.com/IO/soiltemp");
+
+console.log("Getting to discovery");
 
 	FlowerPower.discover(function(flowerPower) {
 		console.log('Found a device');
