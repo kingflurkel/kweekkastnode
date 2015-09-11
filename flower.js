@@ -24,6 +24,15 @@ var myFirebaseRef = new Firebase("https://kweekkast.firebaseio.com/");
 				flowerPower.on('airTemperatureChange', function(airtemp){
 					console.log("airtemp changed: ",airtemp);
 				});
+				flowerPower.on('sunlightChange', function(sunlight){
+					console.log("sunlight changed: ", sunlight);
+				});
+				flowerPower.on('soilTemperatureChange', function(soiltemp){
+					console.log("soiltemp changed: ", soiltemp);
+				});
+				flowerPower.on('soilMoistureChange', function(soilmoist){
+					console.log("soilmoist changed: ", soilmoist);
+				});
 			});
 		});
 	});
