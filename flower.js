@@ -28,7 +28,7 @@ console.log("Getting to discovery");
 			console.log('battery setup');
 			setInterval(function(){
 				console.log('battery log');
-				flowerPower.readBatteryLevel(function(err, batterylevel){
+				flowerPower.readBatteryLevel(err, function(batterylevel){
 					fb_battery.set({"battery": batterylevel});
 				})}, 30 * 1000);
 
