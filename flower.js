@@ -1,9 +1,6 @@
 //sudo forever stop -a -l forever.log -o out2.log -e err.log /mnt/KFProjects/kweekkast/flower.js 
 
-
 console.log("Kweekkast starting");
-
-
 
 var request = require("request");
 var FlowerPower = require('flower-power');
@@ -37,23 +34,25 @@ console.log("Getting to discovery");
 					console.log("airtemp changed: ",airtemp);
 					fb_airtemp.set({'airtemp': airtemp, 'timestamp': Date.now()});
 				});
+
 				flowerPower.on('sunlightChange', function(sunlight){
 					console.log("sunlight changed: ", sunlight);
 					fb_sun.set({'sun': sunlight, 'timestamp': Date.now()});
 				});
+
 				flowerPower.on('soilTemperatureChange', function(soiltemp){
 					console.log("soiltemp changed: ", soiltemp);
 					fb_soiltemp.set({'soiltemp': soiltemp, 'timestamp': Date.now()});
 				});
+
 				flowerPower.on('soilMoistureChange', function(soilmoist){
 					console.log("soilmoist changed: ", soilmoist);
 					fb_moist.set({'soilmoist': soilmoist, 'timestamp': Date.now()});
 				});
+				
 			});
 		});
 	});
-
-
 
 function fetchData(flowerPower) {
 
